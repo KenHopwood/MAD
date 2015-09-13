@@ -3,17 +3,18 @@ __author__ = 'kenhopwood'
 # 13-SEP-2015
 # K.Hopwood
 
+#stationid for Bakersfield 5325738
+
 import socket
 import urllib2
 
-def getWeatherCurrent(stationid):
+def getWeatherCurrent(stationid, key):
 
     # timeout in seconds
     timeout = 10
     socket.setdefaulttimeout(timeout)
 
-#TODO: get actual APPID
-    req = urllib2.Request('api.openweathermap.org/data/2.5/weather?id='+str(stationid)+',us'+ '&APPID=1111111111')
+    req = urllib2.Request('api.openweathermap.org/data/2.5/weather?id='+str(stationid)+',us'+ '&APPID=' +str(key))
     try:
         response = urllib2.urlopen(req)
     except urllib2.URLError as e:
