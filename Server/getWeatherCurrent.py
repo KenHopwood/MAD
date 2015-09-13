@@ -6,13 +6,14 @@ __author__ = 'kenhopwood'
 import socket
 import urllib2
 
-def getWeatherCurrent(zipCode):
+def getWeatherCurrent(stationid):
 
     # timeout in seconds
     timeout = 10
     socket.setdefaulttimeout(timeout)
 
-    req = urllib2.Request("api.openweathermap.org/data/2.5/weather?zip="+str(zipCode)+',us')
+#TODO: get actual APPID
+    req = urllib2.Request('api.openweathermap.org/data/2.5/weather?id='+str(stationid)+',us'+ '&APPID=1111111111')
     try:
         response = urllib2.urlopen(req)
     except urllib2.URLError as e:
