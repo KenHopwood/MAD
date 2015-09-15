@@ -14,7 +14,7 @@ def getWeatherCurrent(stationid, key):
     timeout = 10
     socket.setdefaulttimeout(timeout)
 
-    req = urllib2.Request('api.openweathermap.org/data/2.5/weather?id='+str(stationid)+',us'+ '&APPID=' +str(key))
+    req = urllib2.Request('api.openweathermap.org/data/2.5/weather?id='+stationid+',us'+ '&APPID=' +key)
     try:
         response = urllib2.urlopen(req)
     except urllib2.URLError as e:
