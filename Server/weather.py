@@ -40,7 +40,7 @@ def getWeatherForecast(stationid, key):
 
     print 'Encoded:', encoded_args
 
-    url = 'http://api.openweathermap.org/data/2.5/weather?forecast?' + encoded_args
+    url = 'http://api.openweathermap.org/data/2.5/forecast?' + encoded_args
 
     response = urllib2.urlopen(url).read()
     return response
