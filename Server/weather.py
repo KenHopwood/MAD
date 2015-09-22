@@ -5,6 +5,7 @@ __author__ = 'kenhopwood'
 # K.Hopwood
 
 import socket
+import urllib
 import urllib2
 
 def getWeatherCurrent(stationid, key):
@@ -13,19 +14,17 @@ def getWeatherCurrent(stationid, key):
     timeout = 10
     socket.setdefaulttimeout(timeout)
 
-    req = urllib2.Request('api.openweathermap.org/data/2.5/weather?id='+stationid+',us'+ '&APPID=' +key)
-    try:
-        response = urllib2.urlopen(req)
-    except urllib2.URLError as e:
-        if hasattr(e, 'reason'):
-            print 'We failed to reach a server.'
-            print 'Reason: ', e.reason
-        elif hasattr(e, 'code'):
-            print 'The server couldn\'t fulfill the request.'
-            print 'Error code: ', e.code
-    else:
-        # everything is fine
-        return response
+    query_args = { 'id':stationid, ',us&APPID':key } # you have to pass in a dictionary
+
+    encoded_args = urllib.urlencode(query_args)
+
+    print 'Encoded:', encoded_args
+
+    url = 'http://api.openweathermap.org/data/2.5/weather?' + encoded_args
+
+    response = urllib2.urlopen(url).read()
+    return response
+
 
 # Get Weather Forecast
 
@@ -35,17 +34,13 @@ def getWeatherForecast(stationid, key):
     timeout = 10
     socket.setdefaulttimeout(timeout)
 
-    req = urllib2.Request('api.openweathermap.org/data/2.5/weather?forecast?id='+stationid+ '&APPID=' +key)
-    try:
-        response = urllib2.urlopen(req)
-    except urllib2.URLError as e:
-        if hasattr(e, 'reason'):
-            print 'We failed to reach a server.'
-            print 'Reason: ', e.reason
-        elif hasattr(e, 'code'):
-            print 'The server couldn\'t fulfill the request.'
-            print 'Error code: ', e.code
-    else:
-        # everything is fine
-        return response
+    query_args = { 'id':stationid, ',us&APPID':key } # you have to pass in a dictionary
 
+    encoded_args = urllib.urlencode(query_args)
+
+    print 'Encoded:', encoded_args
+
+    url = 'http://api.openweathermap.org/data/2.5/weather?forecast?' + encoded_args
+
+    response = urllib2.urlopen(url).read()
+    return response
