@@ -8,10 +8,11 @@ import socket
 import urllib
 import urllib2
 
-def getWeatherCurrent(stationid, key):
+# OpenWeatherMap API http://openweathermap.org/api
+def get_weather_current(stationid, key):
 
     # timeout in seconds
-    timeout = 10
+    timeout = 20
     socket.setdefaulttimeout(timeout)
 
     query_args = { 'id':stationid, ',us&APPID':key } # you have to pass in a dictionary
@@ -28,10 +29,10 @@ def getWeatherCurrent(stationid, key):
 
 # Get Weather Forecast
 
-def getWeatherForecast(stationid, key):
+def get_weather_forecast(stationid, key):
 
     # timeout in seconds
-    timeout = 10
+    timeout = 20
     socket.setdefaulttimeout(timeout)
 
     query_args = { 'id':stationid, ',us&APPID':key } # you have to pass in a dictionary

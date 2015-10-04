@@ -20,7 +20,7 @@ if __name__=='__main__':
         # Get Weather Current
         # Call API
         print 'getting current weather...'
-        response = weather.getWeatherCurrent('5325738', '9ea94521b367fd81b60f91b526bc9fee')
+        response = weather.get_weather_current('5325738', '9ea94521b367fd81b60f91b526bc9fee')
         # parse JSON response
         weather_current = json.loads(response)
         print(json.dumps(weather_current))
@@ -28,7 +28,7 @@ if __name__=='__main__':
         # Get Weather Forecast
         # Call API
         print 'getting weather forecast...'
-        response = weather.getWeatherForecast('5325738', '9ea94521b367fd81b60f91b526bc9fee')
+        response = weather.get_weather_forecast('5325738', '9ea94521b367fd81b60f91b526bc9fee')
         # parse JSON response
         weather_forecast = json.loads(response)
         print(json.dumps(weather_forecast))
